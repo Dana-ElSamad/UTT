@@ -1,7 +1,7 @@
 For a description of the game see: http://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/
 
-Compile
-g++ -o ultimate_tic_tac_toe ultimate_tic_tac_toe.cpp
+<h2>Compile</h2>
+<code>g++ -o ultimate_tic_tac_toe ultimate_tic_tac_toe.cpp</code>
 
-Run
-./ultimate_tic_tac_toe
+<h2Run</h2>
+<code>./ultimate_tic_tac_toe</code>
