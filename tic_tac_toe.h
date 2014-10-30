@@ -16,7 +16,6 @@ public:
     Piece _board[3][3];
 
 private:
-    Piece** getBoard();
     Status _gameStatus;
 };
 

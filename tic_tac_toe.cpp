@@ -16,11 +16,6 @@ void TicTacToeBoard::initBoard()
             _board[x][y] = TTTS_BLANK;
 }
 
-Piece** TicTacToeBoard::getBoard()
-{
-    return (Piece **) _board;
-}
-
 Status TicTacToeBoard::getStatus()
 {
     return _gameStatus;
