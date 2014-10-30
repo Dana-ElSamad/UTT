@@ -1,30 +1,7 @@
 #include <iostream>
-#include "tic_tac_toe.cpp"
+#include "ultimate_tic_tac_toe.h"
 
 using namespace std;
-
-//enum Status {NONE, TIE, O, X};
-
-class UltimateTicTacToe
-{
-public:
-    UltimateTicTacToe();
-    void displayBoards();
-    char getTurn();
-    void move(int row, int column);
-    int getBoardNo();
-    void setBoardNo(int board_no);
-    Status update();
-
-private:
-    void initStatuses();
-    void setTurn();
-
-    int _board_no;   // current # tictactoe board
-    Piece _turn;     // hold current player
-    TicTacToeBoard _boards[3][3];
-    Status _boardStatuses[3][3];  // store the status of each tictictoe game
-};
 
 UltimateTicTacToe::UltimateTicTacToe()
 {
