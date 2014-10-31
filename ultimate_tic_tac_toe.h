@@ -9,7 +9,7 @@ public:
     UltimateTicTacToe();
     void displayBoards();
     char getTurn();
-    void move(int row, int column);
+    void move(int cell);
     int getBoardNo();
     void setBoardNo(int board_no);
     Status update();

@@ -21,13 +21,14 @@ Status TicTacToeBoard::getStatus()
     return _gameStatus;
 }
 
-int TicTacToeBoard::move(int x, int y, Piece _turn)
+int TicTacToeBoard::move(int cell, Piece _turn)
 {
     /* player grid is display from 1 
      * so 1 must be subtracted for the 
      * correct indice */
-    if(_board[x-1][y-1] == TTTS_BLANK) {
-        _board[x-1][y-1] = _turn;
+    cell = cell - 1;
+    if(_board[cell/3][cell%3] == TTTS_BLANK) {
+        _board[cell/3][cell%3] = _turn;
         return 1;
     }
     return 0;  // cell already occupied

@@ -10,7 +10,7 @@ public:
     TicTacToeBoard();
     void initBoard();
     void displayBoard();
-    int move(int x, int y, Piece _turn);
+    int move(int cell, Piece _turn);
     Status update();
     Status getStatus();
     Piece _board[3][3];

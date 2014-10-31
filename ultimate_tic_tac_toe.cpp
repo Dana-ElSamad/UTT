@@ -39,28 +39,27 @@ void UltimateTicTacToe::setBoardNo(int board_no)
     _board_no = board_no;
 }
 
-void UltimateTicTacToe::move(int row, int column)
+void UltimateTicTacToe::move(int cell)
 {
     cout << "Board no: " << _board_no+1 << endl;
     // convert 1d index to 2d
-    if(_boards[_board_no/3][_board_no%3].move(row, column, _turn)) {
+    if(_boards[_board_no/3][_board_no%3].move(cell, _turn)) {
         // minus 1 for zero indexing and convert 2d index to 1d :D
-        _board_no = (row - 1) * 3 + (column - 1);
-        if(_boardStatuses[row-1][column-1] != NONE) {
+        _board_no = cell - 1;
+        if(_boardStatuses[_board_no/3][_board_no%3] != NONE) {
             // the game on the chosen board is finished
             displayBoards();
-            cout << "Player " << getTurn() << " select board: ";
+            char nextPlayer = getTurn() == X ? 'O' : 'X';
+            cout << "Player " << nextPlayer << " select board: ";
             cin >> _board_no;
             _board_no -= 1;
         }
     } else {
         // chosen cell is already occupied
         cout << "Position already occupied. Try again." << endl;
-        cout << "row: ";
-        cin >> row;
-        cout << "column: ";
-        cin >> column;
-        move(row, column);  // call the function again with new parameters
+        cout << "cell: ";
+        cin >> cell;
+        move(cell);  // call the function again with new parameters
     }
 }
 
@@ -182,16 +181,14 @@ int main()
     cin >> board_no;
     board.setBoardNo(board_no-1); // minus 1 for zero-based indexing
 
-    int row, column;
+    int cell;
     bool playing = true;
     while(playing)
     {
         cout << "Player " << board.getTurn() << " select cell" << endl;
-        cout << "row: ";
-        cin >> row;
-        cout << "column: ";
-        cin >> column;
-        board.move(row, column);
+        cout << "cell: ";
+        cin >> cell;
+        board.move(cell);
         board.displayBoards();
  
         int status = board.update();
