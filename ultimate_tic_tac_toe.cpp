@@ -199,10 +199,7 @@ int main()
         board.move(cell);
         board.displayBoards();
         int status = board.update();
-
-        if(board.boardFinished())
-            board.selectNewBoard();
-        
+ 
         switch(status)
         {
             case X:
@@ -220,5 +217,7 @@ int main()
             default:
                 break;
         }    
+        if(board.boardFinished())
+            board.selectNewBoard();
     }
 }
