@@ -12,6 +12,8 @@ public:
     void move(int cell);
     int getBoardNo();
     void setBoardNo(int board_no);
+    bool boardFinished();
+    void selectNewBoard();
     Status update();
 
 private:

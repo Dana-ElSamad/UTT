@@ -39,21 +39,29 @@ void UltimateTicTacToe::setBoardNo(int board_no)
     _board_no = board_no;
 }
 
+bool UltimateTicTacToe::boardFinished()
+{
+        if(_boardStatuses[_board_no/3][_board_no%3] != NONE)
+            return true;
+        return false;
+}
+
+void UltimateTicTacToe::selectNewBoard()
+{
+    cout << "The game on the next board is finished, " << getTurn() << " select next board: ";
+    cin >> _board_no;
+    _board_no -= 1;
+    if(boardFinished())
+        selectNewBoard();
+}
+
 void UltimateTicTacToe::move(int cell)
 {
     cout << "Board no: " << _board_no+1 << endl;
     // convert 1d index to 2d
     if(_boards[_board_no/3][_board_no%3].move(cell, _turn)) {
         // minus 1 for zero indexing and convert 2d index to 1d :D
-        _board_no = cell - 1;
-        if(_boardStatuses[_board_no/3][_board_no%3] != NONE) {
-            // the game on the chosen board is finished
-            displayBoards();
-            char nextPlayer = getTurn() == X ? 'O' : 'X';
-            cout << "Player " << nextPlayer << " select board: ";
-            cin >> _board_no;
-            _board_no -= 1;
-        }
+        _board_no = cell - 1; 
     } else {
         // chosen cell is already occupied
         cout << "Position already occupied. Try again." << endl;
@@ -190,8 +198,10 @@ int main()
         cin >> cell;
         board.move(cell);
         board.displayBoards();
- 
         int status = board.update();
+
+        if(board.boardFinished())
+            board.selectNewBoard();
         
         switch(status)
         {
